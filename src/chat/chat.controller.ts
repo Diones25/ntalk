@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Render } from '@nestjs/common';
 import { ChatService } from './chat.service';
 import { CreateChatDto } from './dto/create-chat.dto';
 import { UpdateChatDto } from './dto/update-chat.dto';
@@ -13,8 +13,9 @@ export class ChatController {
   }
 
   @Get()
+  @Render('pages/home')
   findAll() {
-    return this.chatService.findAll();
+    return { message: 'Olá Mundo com EJS e NestJS!' }
   }
 
   @Get(':id')
